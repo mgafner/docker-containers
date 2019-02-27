@@ -1,0 +1,45 @@
+# This file is part of my-docker-containers
+# https://github.com/mgafner/my-docker-containers
+#
+# This is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this file.  If not, see <http://www.gnu.org/licenses/>.
+
+version: '2.2'
+
+services:
+  app:
+    image: linuxserver/tvheadend:latest
+
+    container_name: tvheadend
+    cpu_count: 2                       # set how many cpu's to make available to that container
+    cpus: 1.5                          # = cpu_limit
+    #cpuset: "0"                       # set which cpu to use
+    devices:
+      - "/dev/dri:/dev/dri"
+    environment:
+      # to set your UID and GID, edit environment variables in .env-file, see example.env
+      - PUID
+      - PGID
+    labels:
+      # set your server url, edit environment variables in .env-file, see example.env
+      - "traefik.frontend.rule=Host:${TRAEFIK_HOST}"
+      - "traefik.port=${TRAEFIK_PORT}"
+    mem_limit: 1G                      # memory hard limit
+    mem_reservation: 500M              # memory soft limit
+    network_mode: "host"               # I am using host mode networking to catch multicast iptv streams
+    restart: unless-stopped
+    volumes:
+      - ./config:/config               # store tvheadend config in local ./config directory
+      - ./recordings:/recordings       # I bind-mounted my external harddisk to ./recordings
+      # see this example for /etc/fstab:
+      # /media/myuser/Media2/Videos /home/myuser/docker/productive/tvheadend/recordings none defaults,noauto,user,bind 0 0
