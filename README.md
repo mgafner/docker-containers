@@ -3,6 +3,13 @@ A set of my docker containers and how to manage them.
 
 All my services are running behind Traefik - The Cloud Native Edge Router (https://traefik.io).
 
+## Traefik - The Cloud Native Edge Router
+Traefik makes it very easy to set up ssl secured services on a docker host. Just set a name on your dns pointing to your server, start the docker container and you are set.
+
+  * Traefik is: a reverse proxy / load balancer that's easy, dynamic, automatic, fast, full-featured, open source, production proven, provides metrics, and integrates with every major cluster technology
+
+It is running on my host network so it can manage dockerized services and host based services. In my configuration (traefik.toml.example) you see 'cockpit' as such host based service.
+
 ## Tvheadend
 I am using Tvheadend for receiving iptv from my internet provider and distributing it in my flat to my TVs. What Tvheadend is writing on https://tvheadend.org about itself:
 
