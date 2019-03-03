@@ -19,3 +19,9 @@ I am using Tvheadend for receiving iptv from my internet provider and distributi
   * The code is hosted at github https://github.com/tvheadend/tvheadend
 
 I am running Tvheadend on the host network so it is able to receive the iptv multicast packets.
+
+## Vice City Multiplayer Server in a Docker
+This is the Vice City Multiplayer Server in a Docker Image.
+
+see also my extra github repo for this nice server: https://github.com/mgafner/vcmp-server-docker/
+
