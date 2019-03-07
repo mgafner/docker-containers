@@ -3,6 +3,9 @@ A set of my docker containers and how to manage them.
 
 All my services are running behind Traefik - The Cloud Native Edge Router (https://traefik.io).
 
+## Home Assistant
+Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server.
+
 ## Traefik - The Cloud Native Edge Router
 Traefik makes it very easy to set up ssl secured services on a docker host. Just set a name on your dns pointing to your server, start the docker container and you are set.
 
